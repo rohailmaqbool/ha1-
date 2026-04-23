@@ -88,6 +88,14 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @DisplayName("should toggle sign from positive to negative")
+    void testPressNegativeKey() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(5);
+        calc.pressNegativeKey();
+        assertEquals("-5", calc.readScreen());
+    }
 
     //TODO hier weitere Tests erstellen
 }
