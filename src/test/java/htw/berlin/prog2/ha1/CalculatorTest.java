@@ -97,6 +97,24 @@ class CalculatorTest {
         assertEquals("-5", calc.readScreen());
     }
 
-    //TODO hier weitere Tests erstellen
+    @Test
+@DisplayName("should display Error when dividing zero by zero")
+void testDivisionByZeroReturnsError() {
+    Calculator calc = new Calculator();
+    calc.pressDigitKey(0);
+    calc.pressBinaryOperationKey("/");
+    calc.pressDigitKey(0);
+    calc.pressEqualsKey();
+    assertEquals("Error", calc.readScreen());
+}
+
+@Test
+@DisplayName("should not display negative zero")
+void testNegativeZero() {
+    Calculator calc = new Calculator();
+    calc.pressNegativeKey();
+    assertEquals("0", calc.readScreen());
+}
+//TODO hier weitere Tests erstellen
 }
 
