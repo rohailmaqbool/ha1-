@@ -105,8 +105,10 @@ public class Calculator {
      * entfernt und der Inhalt fortan als positiv interpretiert.
      */
     public void pressNegativeKey() {
-        screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
-    }
+    if (screen.equals("0")) return;
+    screen = screen.startsWith("-") ? screen.substring(1) : "-" + screen;
+}
+
 
     /**
      * Empfängt den Befehl der gedrückten "="-Taste.
@@ -127,6 +129,7 @@ public class Calculator {
         };
         screen = Double.toString(result);
         if(screen.equals("Infinity")) screen = "Error";
+        if(screen.equals("NaN")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
